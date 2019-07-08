@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ListViewDemo</string>
+
+    <string name="username">User name</string>
+</resources>
