@@ -50,17 +50,35 @@ public class MainActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getBaseContext(), AddNewContactActivity.class));
+
+                Intent intent=new Intent(getBaseContext(), AddNewContactActivity.class);
+                //Truyền 1 object bằng intent
+                intent.putExtra("contact",contact1);
+                startActivity(intent);
+
             }
         });
 
         lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String name = contactList.get(i).getName();
-
-                Toast.makeText(getBaseContext(), name, Toast.LENGTH_SHORT).show();
+                String name =contactList.get(i).getName();
+                Toast.makeText(getBaseContext(),"Name: " +name,Toast.LENGTH_LONG ).show();
             }
         });
+
+
+
+
+
+
+//        lvContact.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                String name = contactList.get(i).getName();
+//
+//                Toast.makeText(getBaseContext(), name, Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 }

@@ -2,9 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/mnItemSave"
+        android:id="@+id/mnSaveContact"
         android:title="Save" />
     <item
-        android:id="@+id/mnItemCancel"
+        android:id="@+id/mnCancelContact"
         android:title="Cancel" />
+    <item
+        android:id="@+id/mnOkContact"
+        android:title="OK" />
 </menu>

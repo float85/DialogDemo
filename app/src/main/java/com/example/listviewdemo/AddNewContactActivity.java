@@ -2,6 +2,7 @@ package com.example.listviewdemo;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,11 +25,17 @@ public class AddNewContactActivity extends AppCompatActivity {
     Button btnGroup, btnTune, btnSend;
     ArrayList<String> phoneType;
 
+    Contact contact;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new);
         setTitle("Add New Contact");
+
+        Intent intent =getIntent();
+
+        contact=(Contact) intent.getSerializableExtra("contact");
 
         spPhoneType = findViewById(R.id.spPhoneType);
         btnTune = findViewById(R.id.btnTune);
@@ -40,7 +47,8 @@ public class AddNewContactActivity extends AppCompatActivity {
         phoneType.add("Word");
         phoneType.add("Home");
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, phoneType);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getBaseContext(),
+                android.R.layout.simple_list_item_1, phoneType);
         spPhoneType.setAdapter(arrayAdapter);
 
 
@@ -48,7 +56,7 @@ public class AddNewContactActivity extends AppCompatActivity {
         btnTune.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] tunes = {"anh phải làm sao", "hãy trao cho anh", "về nhà đi con"};
+                String[] tunes = {"Anh phải làm sao", "Hãy trao cho anh", "Về nhà đi con"};
                 AlertDialog alertDialog = new AlertDialog.Builder(AddNewContactActivity.this)
                         .setTitle("Set RingTune")
 //                        .setMessage("SetMessenger")
@@ -115,7 +123,8 @@ public class AddNewContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PopupMenu popupMenu = new PopupMenu(getBaseContext(), view);
-                popupMenu.getMenuInflater().inflate(R.menu.new_contact_menu, popupMenu.getMenu());
+                popupMenu.getMenuInflater().inflate(R.menu.new_contact_menu,
+                        popupMenu.getMenu());
 
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
@@ -127,11 +136,11 @@ public class AddNewContactActivity extends AppCompatActivity {
                             case R.id.mnItemCancel:
                                 Toast.makeText(getBaseContext(), "Cancel", Toast.LENGTH_SHORT).show();
                                 break;
-
                         }
                         return false;
                     }
                 });
+
                 popupMenu.show();
             }
         });
@@ -141,9 +150,16 @@ public class AddNewContactActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.new_contact_menu, menu);
+        menuInflater.inflate(R.menu.menu_contact, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+
+
+
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
