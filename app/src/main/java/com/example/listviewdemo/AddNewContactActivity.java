@@ -33,9 +33,9 @@ public class AddNewContactActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new);
         setTitle("Add New Contact");
 
-        Intent intent =getIntent();
+        Intent intent = getIntent();
 
-        contact=(Contact) intent.getSerializableExtra("contact");
+        contact = (Contact) intent.getSerializableExtra("contact");
 
         spPhoneType = findViewById(R.id.spPhoneType);
         btnTune = findViewById(R.id.btnTune);
@@ -90,19 +90,23 @@ public class AddNewContactActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String[] group = {"Bạn bè", "Facebook", "Zalo", "Gia đình"};
-                boolean[] isChecks = {false, true, false, true};
+                final boolean[] isChecks = {false, true, false, true};
 
                 AlertDialog alertDialog = new AlertDialog.Builder(AddNewContactActivity.this)
                         .setTitle("Select Group")
                         .setMultiChoiceItems(group, isChecks, new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i, boolean b) {
+                                int postion = i;
+                                boolean b1 = b;
 
+                                isChecks[i] = b;
                             }
                         })
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+
 
                             }
                         })
@@ -154,21 +158,17 @@ public class AddNewContactActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
-
-
-
-
-
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.mnItemSave:
+            case R.id.mnSaveContact:
                 Toast.makeText(getBaseContext(), "Save", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.mnItemCancel:
+            case R.id.mnCancelContact:
                 Toast.makeText(getBaseContext(), "Cancel", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.mnOkContact:
+                Toast.makeText(getBaseContext(), "OK", Toast.LENGTH_SHORT).show();
                 break;
 
         }
