@@ -1,0 +1,46 @@
+ protected void btnShow_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["VPB_REPORT_DEVconnectionstring2"].ConnectionString);
+
+                conn.Open();
+
+                string _mInsert = "insert into sinhvientable (name,address) values (@name,@address)";
+
+                SqlCommand cmd = new SqlCommand(_mInsert, conn);
+                cmd.Parameters.AddWithValue("@name", etName.Text);
+                cmd.Parameters.AddWithValue("@address", etAddress.Text);
+                cmd.ExecuteNonQuery();
+
+                Response.Redirect("HomeActivity.aspx");
+                cmd.Clone();
+            }
+            catch(Exception ex)
+            {
+                Response.Write(ex);
+            }
+        }
+
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["VPB_REPORT_DEVconnectionstring2"].ConnectionString);
+
+                conn.Open();
+
+                string _mDelete = "Delete from SinhVienTable where id=@id";
+
+                SqlCommand cmd = new SqlCommand(_mDelete, conn);
+                cmd.Parameters.AddWithValue("@id", etID.Text);                
+                cmd.ExecuteNonQuery();
+
+                Response.Redirect("HomeActivity.aspx");
+                cmd.Clone();
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex);
+            }
+        }
