@@ -1,5 +1,11 @@
 <resources>
-    <string name="app_name">ListViewDemo</string>
+    <string name="app_name">DialogMenu</string>
 
-    <string name="username">User name</string>
+    <array name="array_list">
+        <item>Android</item>
+        <item>IOS</item>
+        <item>PHP</item>
+        <item>SQL server</item>
+        <item>Kotlin</item>
+    </array>
 </resources>
