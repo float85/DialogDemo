@@ -1,11 +1,5 @@
 <resources>
-    <string name="app_name">DialogMenu</string>
-
-    <array name="array_list">
-        <item>Android</item>
-        <item>IOS</item>
-        <item>PHP</item>
-        <item>SQL server</item>
-        <item>Kotlin</item>
-    </array>
+    <string name="app_name">DialogDemo41</string>
+    <string name="mn_save">Save</string>
+    <string name="mn_cancel">Cancel</string>
 </resources>
